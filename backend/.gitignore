@@ -1,0 +1,13 @@
+# npm
+node_modules
+pnpm-lock.yaml
+*.log
+*.gz
+
+# Coveralls
+.nyc_output
+coverage
+
+/generated/prisma
+
+/generated/prisma

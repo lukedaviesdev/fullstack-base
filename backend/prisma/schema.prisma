@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Theme preference: light, dark, or follow system
+enum Theme {
+  light
+  dark
+  system
+}
+
+// Color scheme options matching the frontend
+enum ColorScheme {
+  slate
+  gray
+  zinc
+  neutral
+  stone
+  red
+  orange
+  amber
+  yellow
+  lime
+  green
+  emerald
+  teal
+  cyan
+  sky
+  blue
+  indigo
+  violet
+  purple
+  fuchsia
+  pink
+  rose
+}
+
+model User {
+  id            Int          @id @default(autoincrement())
+  email         String       @unique
+  name          String
+  password      String       // Hashed password
+
+  // Theme preferences (synced from frontend)
+  theme         Theme        @default(system)
+  colorScheme   ColorScheme  @default(slate)
+
+  // Timestamps
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}

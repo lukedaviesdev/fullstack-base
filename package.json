@@ -1,0 +1,20 @@
+{
+  "name": "fullstack-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently -n db,api,web -c blue,green,magenta 'cd backend && pnpm run dev:db' 'cd backend && pnpm run dev' 'cd frontend && pnpm run dev'",
+    "dev:no-proxy": "concurrently -n api,web -c green,magenta 'cd backend && pnpm run dev' 'cd frontend && pnpm run dev'",
+    "dev:frontend": "cd frontend && pnpm run dev",
+    "dev:backend": "concurrently -n db,api -c blue,green 'cd backend && pnpm run dev:db' 'cd backend && pnpm run dev'",
+    "dev:backend:no-proxy": "cd backend && pnpm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
